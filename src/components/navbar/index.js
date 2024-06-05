@@ -4,9 +4,16 @@ import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav'
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const CustomNavbar = () => {
+
+    const navigate = useNavigate();
+
+    const handleLoginRedirect = () => {
+        navigate("/login");
+    }
+
     return ( 
         <Navbar bg="dark" variant="dark" expand="lg" >
             <Container fluid>
@@ -27,7 +34,7 @@ const CustomNavbar = () => {
 
                     </Nav>
 
-                    <Button variant="outline-info" className="me-2">Login</Button>
+                    <Button variant="outline-info" className="me-2" onClick={handleLoginRedirect}>Login</Button>
                     <Button variant="outline-info">Register</Button>
 
                 </Navbar.Collapse>

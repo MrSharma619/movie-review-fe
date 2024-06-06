@@ -10,6 +10,8 @@ import Reviews from "./components/reviews";
 import NotFound from "./components/notFound";
 import Login from "./components/login";
 import Register from "./components/register";
+import { Slide, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -37,8 +39,7 @@ function App() {
 
       setMovie(response.data);
 
-      //setReviewIds(response.data.reviewIds); 
-
+      //setReviewIds(response.data.reviewIds);
     } catch (error) {
       console.log("App-getMovieData: ", error);
     }
@@ -51,6 +52,15 @@ function App() {
   return (
     <div className="App">
       <CustomNavbar />
+
+      <ToastContainer
+        autoClose={3000}
+        position="top-right"
+        closeOnClick
+        pauseOnHover
+        transition={Slide}
+        hideProgressBar={false}
+      />
 
       <Routes>
         <Route path="/" element={<Layout />}>

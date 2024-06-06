@@ -14,6 +14,10 @@ const CustomNavbar = () => {
         navigate("/login");
     }
 
+    const handleRegisterRedirect = () => {
+        navigate("/register");
+    }
+
     return ( 
         <Navbar bg="dark" variant="dark" expand="lg" >
             <Container fluid>
@@ -35,7 +39,7 @@ const CustomNavbar = () => {
                     </Nav>
 
                     <Button variant="outline-info" className="me-2" onClick={handleLoginRedirect}>Login</Button>
-                    <Button variant="outline-info">Register</Button>
+                    <Button variant="outline-info" onClick={handleRegisterRedirect}>Register</Button>
 
                 </Navbar.Collapse>
 

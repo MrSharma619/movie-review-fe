@@ -9,6 +9,7 @@ import Trailer from "./components/trailer";
 import Reviews from "./components/reviews";
 import NotFound from "./components/notFound";
 import Login from "./components/login";
+import Register from "./components/register";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -68,6 +69,7 @@ function App() {
           />
         </Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>

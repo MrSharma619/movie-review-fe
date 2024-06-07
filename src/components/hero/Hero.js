@@ -14,6 +14,8 @@ const Hero = ({ movies }) => {
         navigate(`/reviews/${imdbId}`);
     }
 
+    //console.log("hero prb");
+
     //console.log(movies);
 
     return ( 

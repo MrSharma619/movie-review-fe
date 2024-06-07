@@ -3,6 +3,8 @@ import StarRating from "../star/star";
 
 const ReviewForm = ({ handleSubmit, reviewText, labelText, defaultValue, rating, setRating }) => {
 
+  //console.log("hi again")
+
   return (
     <Form>
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

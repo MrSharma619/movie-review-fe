@@ -15,11 +15,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [movie, setMovie] = useState({});
 
   //const [reviewIds, setReviewIds] = useState([]);
 
+  //  console.log("hi");
+
   const getAllMovies = async () => {
+    //console.log("hi");
+
     try {
       const response = await api.get("/api/movies");
 
@@ -28,20 +31,6 @@ function App() {
       setMovies(response.data);
     } catch (error) {
       console.log("App-getAllMovies: ", error);
-    }
-  };
-
-  const getMovieData = async (imdbId) => {
-    try {
-      const response = await api.get(`/api/movies/imdb/${imdbId}`);
-
-      //console.log(response.data);
-
-      setMovie(response.data);
-
-      //setReviewIds(response.data.reviewIds);
-    } catch (error) {
-      console.log("App-getMovieData: ", error);
     }
   };
 
@@ -66,17 +55,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home movies={movies} />} />
           <Route path="/trailer/:ytTrailerId" element={<Trailer />} />
-          <Route
-            path="/reviews/:imdbId"
-            element={
-              <Reviews
-                getMovieData={getMovieData}
-                // reviewIds={reviewIds}
-                // setReviewIds={setReviewIds}
-                movie={movie}
-              />
-            }
-          />
+          <Route path="/reviews/:imdbId" element={<Reviews />} />
         </Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>

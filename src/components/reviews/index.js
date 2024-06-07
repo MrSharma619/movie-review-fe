@@ -50,7 +50,7 @@ const Reviews = () => {
 
         //const updatedReviewIds = [...reviewIds, response.data.id];
 
-        const updatedReviews = [...reviews, response.data];
+        const updatedReviews = [response.data, ...reviews];
 
         reviewBody.value = ""; //clear text area after this
         setRating(0); //clear stars after this
@@ -75,7 +75,7 @@ const Reviews = () => {
 
   const getReviewsForMovie = async (imdbId) => {
     try {
-      const response = await api.get(`/api/movies/imdb/${imdbId}/reviews`);
+      const response = await api.get(`/api/reviews/${imdbId}`);
 
       //console.log(response.data);
 

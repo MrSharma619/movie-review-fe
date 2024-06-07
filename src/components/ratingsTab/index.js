@@ -3,8 +3,8 @@ import "./style.css";
 const RatingTab = ({ reviews }) => {
   const totalReviews = reviews?.length;
 
-  const averageRating =
-    reviews?.reduce((total, next) => total + next.rating, 0) / totalReviews;
+    const averageRating =
+      (reviews?.reduce((total, next) => total + next.rating, 0) / totalReviews).toFixed(1);
 
   const total5StarReviews = reviews?.filter(
     (review) => review.rating === 5
@@ -99,7 +99,7 @@ const RatingTab = ({ reviews }) => {
 
         {/* 5 star images till here */}
 
-        {averageRating ? (
+        {!isNaN(averageRating) ? (
           <div className="rating-text">
             <span className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
               {averageRating}
@@ -111,7 +111,9 @@ const RatingTab = ({ reviews }) => {
               5
             </span>
           </div>
-        ) : <></>}
+        ) : (
+          <></>
+        )}
       </div>
       <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
         {totalReviews} global rating(s)
@@ -137,7 +139,7 @@ const RatingTab = ({ reviews }) => {
         </div>
         <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
           {`${
-            totalReviews === 0 ? 0 : (total5StarReviews * 100) / totalReviews
+            totalReviews === 0 ? 0 : ((total5StarReviews * 100) / totalReviews).toFixed(1)
           }%`}
         </span>
       </div>
@@ -162,7 +164,7 @@ const RatingTab = ({ reviews }) => {
         </div>
         <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
           {`${
-            totalReviews === 0 ? 0 : (total4StarReviews * 100) / totalReviews
+            totalReviews === 0 ? 0 : ((total4StarReviews * 100) / totalReviews).toFixed(1)
           }%`}
         </span>
       </div>
@@ -187,7 +189,7 @@ const RatingTab = ({ reviews }) => {
         </div>
         <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
           {`${
-            totalReviews === 0 ? 0 : (total3StarReviews * 100) / totalReviews
+            totalReviews === 0 ? 0 : ((total3StarReviews * 100) / totalReviews).toFixed(1)
           }%`}
         </span>
       </div>
@@ -212,7 +214,7 @@ const RatingTab = ({ reviews }) => {
         </div>
         <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
           {`${
-            totalReviews === 0 ? 0 : (total2StarReviews * 100) / totalReviews
+            totalReviews === 0 ? 0 : ((total2StarReviews * 100) / totalReviews).toFixed(1)
           }%`}
         </span>
       </div>
@@ -237,7 +239,7 @@ const RatingTab = ({ reviews }) => {
         </div>
         <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
           {`${
-            totalReviews === 0 ? 0 : (total1StarReviews * 100) / totalReviews
+            totalReviews === 0 ? 0 : ((total1StarReviews * 100) / totalReviews).toFixed(1)
           }%`}
         </span>
       </div>

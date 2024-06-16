@@ -69,3 +69,17 @@
     font-size: 4rem;
     color: white;
 }
+
+.d-flex-add-watchlist{
+    display: flex;
+    width: 180px;
+}
+
+.btn-watchlist-text{
+    margin-top: 1px;
+    margin-left: 2px;
+}
+
+.btn-reviews, .btn-add-watchlist{
+    width: 205px;
+}

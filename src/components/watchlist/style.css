@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Cookie&display=swap");
+
+.d-flex-watchlist {
+  display: flex;
+  height: 673px;
+  width: 100%;
+}
+
+.img-watchlist-div {
+  height: 100%;
+  width: 50%;
+}
+
+.img-watchlist {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.text-watchlist-div-parent {
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  font-size: 60px;
+}
+
+.text-watchlist-div {
+  font-family: "Cookie", cursive !important;
+  font-weight: 400;
+  font-style: normal;
+  transform: rotate(-20deg);
+  margin-top: 80px;
+}
+
+.gold-text-watchlist{
+    color: gold;
+}
+
+.rainbow-btn {
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400%;
+    cursor: pointer;
+    animation: rainbow 3s linear infinite, grow-shrink 1.5s ease-in-out infinite;
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes grow-shrink {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+}

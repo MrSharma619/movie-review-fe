@@ -12,6 +12,7 @@ import Login from "./components/login";
 import Register from "./components/register";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Watchlist from "./components/watchlist";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -56,6 +57,7 @@ function App() {
           <Route path="/" element={<Home movies={movies} />} />
           <Route path="/trailer/:ytTrailerId" element={<Trailer />} />
           <Route path="/reviews/:imdbId" element={<Reviews />} />
+          <Route path="/watchlist" element={<Watchlist />} /> 
         </Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>

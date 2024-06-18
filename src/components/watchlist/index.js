@@ -58,7 +58,7 @@ const Watchlist = () => {
         <br></br>
 
         <button onClick={handleLoginRedirect} className="rainbow-btn">
-          Please login now!
+          Login now!
         </button>
       </div>
       <div className="flex-fill img-watchlist-div">

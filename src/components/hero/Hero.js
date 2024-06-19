@@ -49,7 +49,7 @@ const Hero = ({ movies }) => {
                     console.log("Hero-addToWatchlist: ", error);
                 }
 
-              }
+            }
 
         }
         else {

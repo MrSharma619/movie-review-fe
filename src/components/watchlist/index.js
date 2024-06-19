@@ -1,9 +1,17 @@
 import { useSelector } from "react-redux";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import api, { setAuthHeader } from "../../axios/apiConfig";
+import WatchlistCard from "./watchlistCard";
+import { toast } from "react-toastify";
 
 const Watchlist = () => {
   const navigate = useNavigate();
+
+  const [watchlist, setWatchlist] = useState([]);
+
+  const [deleted, setDeleted] = useState(false);
 
   const getRandomItem = () => {
     const imagesWhenNotLoggedIn = [
@@ -33,8 +41,89 @@ const Watchlist = () => {
 
   const token = useSelector((state) => state.token.value);
 
+  const handleRemoveWatchlist = async (e, imdbId) => {
+    e.preventDefault();
+
+    if (token.length > 0) {
+      try {
+        setAuthHeader(token, api);
+
+        const params = {
+            imdbId: imdbId
+        }
+
+        const response = await api.delete("/api/watchlist", { params });
+
+        //console.log(response);
+
+        if (response.status === 200) {
+
+          setDeleted(!deleted);
+
+          toast.success("Watchlist updated successfully...");
+        }
+      } catch (error) {
+        console.log("WatchlistCard-handleRemoveWatchlist: ", error);
+      }
+    }
+  };
+
+  useEffect(() => {
+
+    async function getWatchlistForUser(){
+
+    
+
+    if (token.length > 0) {
+      
+      try {
+        setAuthHeader(token, api);
+  
+        const response = await api.get("/api/watchlist");
+  
+        //console.log(response);
+  
+        setWatchlist(response.data);
+      } catch (error) {
+        console.log("Watchlist-fetchWatchListForUser: ", error);
+      }
+
+    }
+  }
+
+  getWatchlistForUser();
+
+  }, [deleted, token]);
+
   if (token.length > 0) {
-    return <h1>hi</h1>;
+    return (
+      <>
+        <div className="d-flex-watchlist2">
+          <div className="p-2 flex-fill header-text-watchlist">Watchlist</div>
+          <div className="p-2 flex-fill sub-text-watchlist">
+            <div className="sub-text-watchlist-inner">
+              All your favorite movies in one place
+            </div>
+          </div>
+        </div>
+
+        <hr className="hr-watchlist" />
+
+        <br></br>
+
+        {watchlist.length > 0 ? (
+          <div className="container-watchlist-card">
+            {watchlist.map((w) => {
+              return <WatchlistCard watchlistMovie={w} handleRemoveWatchlist={handleRemoveWatchlist}  key={w.imdbId} />;
+            })}
+          </div>
+        ) : (
+          <div>
+            no
+          </div>
+        )}
+      </>
+    );
   }
 
   return (

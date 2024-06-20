@@ -114,56 +114,72 @@
   margin: 50px;
 }
 
-.card-watchlist{
-    width: 320px;
-    margin: 20px;
-    box-shadow: 2px 2px 18px 0 cyan;
-    border: 1px solid white;
-    background-color: white;
-    color: black;
-    border-radius: 5px;
+.card-watchlist {
+  width: 320px;
+  margin: 20px;
+  box-shadow: 2px 2px 18px 0 cyan;
+  border: 1px solid white;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
 }
 
 .card-watchlist:hover {
-    box-shadow: 5px 5px 28px 0 cyan;
-  }
-
-.card-watchlist-img-top{
-    height: 270px;
-    width: 360px;
-    border-radius: 5px 5px 0 0;
+  box-shadow: 5px 5px 28px 0 cyan;
 }
 
-.card-watchlist-body{
-    padding: 20px;
+.card-watchlist-img-top {
+  height: 270px;
+  width: 360px;
+  border-radius: 5px 5px 0 0;
 }
 
-.card-watchlist-title{
-    height: 150px;
-    width: 100%;
-    font-weight: bold;
-    font-size: 30px;
+.card-watchlist-body {
+  padding: 20px;
 }
 
-.year-text{
-    font-weight: 500;
-    font-style: italic;
-    font-size: 20px;
+.card-watchlist-title {
+  height: 150px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 30px;
 }
 
-.d-flex-watchlist-footer{
-    display: flex;
-    justify-content: space-between;
+.year-text {
+  font-weight: 500;
+  font-style: italic;
+  font-size: 20px;
 }
 
-.remove-watchlist{
-    color: red;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 0 20px;
-    margin-bottom: 5px;
+.d-flex-watchlist-footer {
+  display: flex;
+  justify-content: space-between;
 }
 
-.remove-watchlist:hover{
-    transform: scale(1.5);
+.remove-watchlist {
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 20px;
+  margin-bottom: 5px;
+}
+
+.remove-watchlist:hover {
+  transform: scale(1.5);
+}
+
+.d-flex-notfound {
+  display: flex;
+  align-items: center;
+}
+
+.text1-notfound {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.text2-notfound {
+  font-size: 25px;
+  font-style: italic;
+  font-weight: 300;
 }

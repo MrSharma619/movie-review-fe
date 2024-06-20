@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import api, { setAuthHeader } from "../../axios/apiConfig";
 import WatchlistCard from "./watchlistCard";
 import { toast } from "react-toastify";
+import WatchlistNotFound from "./watchlistNotFound";
 
 const Watchlist = () => {
   const navigate = useNavigate();
@@ -49,15 +50,14 @@ const Watchlist = () => {
         setAuthHeader(token, api);
 
         const params = {
-            imdbId: imdbId
-        }
+          imdbId: imdbId,
+        };
 
         const response = await api.delete("/api/watchlist", { params });
 
         //console.log(response);
 
         if (response.status === 200) {
-
           setDeleted(!deleted);
 
           toast.success("Watchlist updated successfully...");
@@ -69,30 +69,23 @@ const Watchlist = () => {
   };
 
   useEffect(() => {
+    async function getWatchlistForUser() {
+      if (token.length > 0) {
+        try {
+          setAuthHeader(token, api);
 
-    async function getWatchlistForUser(){
+          const response = await api.get("/api/watchlist");
 
-    
+          //console.log(response);
 
-    if (token.length > 0) {
-      
-      try {
-        setAuthHeader(token, api);
-  
-        const response = await api.get("/api/watchlist");
-  
-        //console.log(response);
-  
-        setWatchlist(response.data);
-      } catch (error) {
-        console.log("Watchlist-fetchWatchListForUser: ", error);
+          setWatchlist(response.data);
+        } catch (error) {
+          console.log("Watchlist-fetchWatchListForUser: ", error);
+        }
       }
-
     }
-  }
 
-  getWatchlistForUser();
-
+    getWatchlistForUser();
   }, [deleted, token]);
 
   if (token.length > 0) {
@@ -114,12 +107,23 @@ const Watchlist = () => {
         {watchlist.length > 0 ? (
           <div className="container-watchlist-card">
             {watchlist.map((w) => {
-              return <WatchlistCard watchlistMovie={w} handleRemoveWatchlist={handleRemoveWatchlist}  key={w.imdbId} />;
+              return (
+                <WatchlistCard
+                  watchlistMovie={w}
+                  handleRemoveWatchlist={handleRemoveWatchlist}
+                  key={w.imdbId}
+                />
+              );
             })}
           </div>
         ) : (
           <div>
-            no
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+
+            <WatchlistNotFound />
           </div>
         )}
       </>
